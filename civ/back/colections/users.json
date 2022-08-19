@@ -1,0 +1,20 @@
+[
+    {
+    "nombre": "lucas zanutel",
+    "dni": 30403143,
+    "mail": "lucas.zanutel@gmail.com",
+    "type": "propietario"
+    },
+    {
+    "nombre": "lucio brandi",
+    "dni": 20403143,
+    "mail": "lucio.brandi@gmail.com",
+    "type": "propietario"
+    },
+    {
+    "nombre": "federico costantino",
+    "dni": 40430143,
+    "mail": "federico.costantino@gmail.com",
+    "type": "propietario"
+    }
+]

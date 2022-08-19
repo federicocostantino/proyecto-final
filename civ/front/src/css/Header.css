@@ -1,0 +1,24 @@
+header {
+    background-color: rgb(87, 86, 86);
+    display: flex !important;
+    flex-direction: column !important;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+header a {
+    color: #FFF;
+}
+
+header > a:link, a:visited, a:active {
+    text-decoration:none !important;
+}
+
+header > a:hover {
+    color: #FFF !important;
+}
+
+.header__logo img {
+    width: 150px;
+    height: auto;
+}

@@ -1,0 +1,30 @@
+[
+    {
+    "fecha": "24-7-2019",
+    "detalle": "cambio de correas",
+    "vehiculo": "arz763",
+    "valor": 10000,
+    "km": 14500
+    },
+    {
+    "fecha": "15-10-2019",
+    "detalle": "cambio de filtros de aceite y aire",
+    "vehiculo": "arz763",
+    "valor": 12000,
+    "km": 14800
+    },
+    {
+    "fecha": "10-3-2020",
+    "detalle": "frenos delanteros",
+    "vehiculo": "lmb111",
+    "valor": 22000,
+    "km": 14500
+    },
+    {
+    "fecha": "09-6-2021",
+    "detalle": "bomba de agua",
+    "vehiculo": "ffc111",
+    "valor": 6000,
+    "km": 195000
+    }
+]

@@ -1,0 +1,11 @@
+.btn__cerrarSesion {
+    position: absolute;
+    width: 100vw !important;
+    top: -100px;
+    right: 0px;
+}
+
+.table > tbody > tr > td:last-child {
+    display: flex;
+    justify-content: center;
+}
