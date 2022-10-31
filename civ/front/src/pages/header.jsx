@@ -1,18 +1,29 @@
 import React from "react";
+import { Link } from "react-router-dom"
 
 import './../css/Header.css'
 
 const Header = () => {
     return ( 
         <header>
-            <a href="/vehiculos">
-                <div className="header__logo">
-                    <img src="/logo.png" alt="Logo de Electromecánica Halmes" />
-                </div>
-                <div>
-                    <h1>Electromecanica Halmes</h1>
-                </div>
-            </a>
+            <div className="visually-hidden">
+                <h1>Esparta</h1>
+            </div>
+            <div className="header">
+                <a href="/">
+                    <div className="image_logo">
+                        <img src="/isologotipo_esparta.png" alt="Logotipo de Esparta" />
+                    </div>
+                </a>
+                <nav>
+                    <ul>
+                        <Link to={`/`}>Inicio</Link>
+                        <Link to={`/blog`}>Blog</Link>
+                        <Link to={`/login`}>Ingresar</Link>
+                        <Link to={`/register`}>Crear cuenta</Link>
+                    </ul>
+                </nav>
+            </div>
         </header>
     )
 }

@@ -48,6 +48,23 @@ const eliminarServicio = (req, res) => {
         .catch(error => res.status(404).json({ message: `Error: ${error}` }))
 }
 
+const endService = (req, res) => {
+    const id = req.body
+    serviciosService.endService(id)
+        // .then(servicio => {
+        //     console.log(servicio)
+        //     servicio ? res.status(200) : res.status(204).json()
+        // })
+        // .catch(error => res.status(404).json({ message: `Error: ${error}` }))
+        .then(servicioModificado => {
+            if(servicioModificado && (servicioModificado.matchedCount || servicioModificado.modifiedCount)) {
+                res.status(201).json({id})
+            } else {
+                res.status(404).json()
+            }
+        })
+}
+
 export {
     verServicios,
     verServiciosPorPatente,
@@ -55,4 +72,5 @@ export {
     nuevoServicio,
     editarServicio,
     eliminarServicio,
+    endService
 }

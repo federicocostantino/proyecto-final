@@ -1,10 +1,11 @@
 import  React, { useState } from "react"
-import * as VehiculosService from "../../../Services/vehiculos.services"
+import * as VehiculosService from "../../../Services/vehicles"
 import { useParams, Link } from 'react-router-dom'
 
 const formNuevoServicio = () => {
     const today = new Date()
     const fecha = today.getDate()+'-'+(today.getMonth()+1)+'-'+today.getFullYear()
+    const state = 'En curso';
 
     const { patente } = useParams()
     const [detalle, setDetalle] = useState('')
@@ -15,7 +16,7 @@ const formNuevoServicio = () => {
     const handleSubmit = (event) => {
         event.preventDefault()
         if(detalle !== '' && valor !== '' && km !== '') {
-            VehiculosService.nuevoServicio({detalle, patente, valor, km, fecha})
+            VehiculosService.nuevoServicio({detalle, patente, valor, km, fecha, state})
         } else {
             setError('Debe completar todos los campos requeridos')
         }
@@ -42,7 +43,6 @@ const formNuevoServicio = () => {
                             onChange={(e) => setKm(Number(e.target.value))}
                             value={km} 
                         />
-                        
                         <button type="submit">Crear</button>
                         <Link to={`/vehiculos/${patente}`} className="mt-3">Volver</Link>
                     </form>   

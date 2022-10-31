@@ -10,7 +10,8 @@ router.get('/', serviciosController.verServicios)
 router.get('/:patente', serviciosController.verServiciosPorPatente)
 router.get('/:patente/:id', serviciosController.verServicioPorId)
 router.post('', serviciosController.nuevoServicio)
-router.patch('/:id' , serviciosController.editarServicio)
+router.patch('/editService/:id' , serviciosController.editarServicio)
+router.patch('/endService', serviciosController.endService)
 router.delete('/:patente', serviciosController.eliminarServicio)
 
 export default router
