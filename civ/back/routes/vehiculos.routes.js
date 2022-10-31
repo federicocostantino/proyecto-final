@@ -6,10 +6,10 @@ const router = express.Router();
 
 router.all('*', authorization)
 
-router.get('/', controller.verVehiculos)
-router.get('/:patente', controller.verVehiculo)
-router.post('/', controller.crearVehiculo)
-router.patch('/:patente', controller.modificarUnVehiculo)
-router.delete('/:patente', controller.eliminarVehiculo)
+router.get('/', controller.findAll) // TO-DO: Cambiar nombre del método.
+router.get('/:domain', controller.findOne)
+router.post('/', controller.createOne)
+router.patch('/:domain', controller.editOne)
+router.delete('/:domain', controller.deleteOne)
 
 export default router

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 import { useParams, Link } from "react-router-dom"
-import * as VehiculosService from "./../../../Services/vehiculos.services"
+import * as VehiculosService from "../../../Services/vehicles"
 
 const ModicarServicio = () => {
     const { patente, id } = useParams()

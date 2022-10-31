@@ -1,5 +1,6 @@
 import { database } from './database.js'
 
+// TO-DO: SE MOVIO A VEHICULOS.SERVICE --> FIJARSE DE QUITAR DE ACÁ.
 const getOneByPatente = async (patente, collection) =>
     database(async db => {
         try {
@@ -25,45 +26,7 @@ database(async db => {
     } 
 })
 
-const patchVehiculo = async (patente, vehiculo, collection) =>
-    database(async db => {
-        try {
-            if(patente !== vehiculo.pat) {
-                const exist = await getOneByPatente(vehiculo.pat, collection)
-                if (!exist) {
-                    await db.collection('servicios').updateMany({patente}, {$set: {
-                        patente: vehiculo.pat,
-                    }})
-                    return await db.collection(collection).updateOne({patente}, {$set: {
-                        patente: vehiculo.pat,
-                        marca: vehiculo.marca,
-                        modelo: vehiculo.modelo,
-                        fabricacion: vehiculo.fabricacion,
-                        color: vehiculo.color,
-                        propietario: vehiculo.propietario,
-                        km: vehiculo.km
-                    }})
-                } else {
-                    return null
-                }
-            } else {
-                return await db.collection(collection).updateOne({patente}, {$set: {
-                    patente: vehiculo.pat,
-                    marca: vehiculo.marca,
-                    modelo: vehiculo.modelo,
-                    fabricacion: vehiculo.fabricacion,
-                    color: vehiculo.color,
-                    propietario: vehiculo.propietario,
-                    km: vehiculo.km
-                }})
-            }
-        } catch (error) {
-            console.log(`Error: ${error}`)
-        }
-    })
-
 export {
     getOneByPatente,
-    postVehiculo,
-    patchVehiculo,
+    postVehiculo
 }

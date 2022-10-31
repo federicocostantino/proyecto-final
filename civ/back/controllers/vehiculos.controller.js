@@ -1,32 +1,32 @@
-import * as service from './../services/vehiculos.service.js'
+import * as service from '../services/vehicles.service.js'
 
-const verVehiculos = (req, res) => {
-  service.dameTodos()
+const findAll = (req, res) => {
+  service.findAll()
       .then(vehiculos => res.status(200).json(vehiculos))
       .catch(error => res.status(404).json({ message: `Error: ${error}` }))
 }
 
-const verVehiculo = (req, res) => {
-  const { patente } = req.params
-  service.dameVehiculo(patente)
-    .then(vehiculo => vehiculo ? res.status(200).json(vehiculo) : res.status(204).json())
+const findOne = (req, res) => {
+  const { domain } = req.params
+  service.findOne(domain)
+    .then(vehicle => vehicle ? res.status(200).json(vehicle) : res.status(204).json())
     .catch(error => res.status(404).json({ message: `Error: ${error}` }))
 }
 
-const crearVehiculo = (req, res) => {
-  const vehiculo = req.body
-  service.grabarVehiculo(vehiculo)
-    .then(vehiculo => vehiculo ? res.status(201).json(vehiculo) : res.status(204).json())
+const createOne = (req, res) => {
+  const vehicle = req.body
+  service.createOne(vehicle)
+    .then(vehicle => vehicle ? res.status(201).json(vehicle) : res.status(204).json())
     .catch(error => res.status(404).json({ message: `Error: ${error}` }))
 }
 
-const modificarUnVehiculo = (req, res) => {
-  const { patente } = req.params
-  const vehiculo = req.body
-  service.modificarVehiculo(patente, vehiculo)
-    .then(vehiculoModificado => {
-      if (vehiculoModificado && (vehiculoModificado.matchedCount || vehiculoModificado.modifiedCount)) {
-        res.status(201).json(vehiculo)
+const editOne = (req, res) => {
+  const { domain } = req.params
+  const vehicle = req.body
+  service.editOne(domain, vehicle)
+    .then(modifiedVehicle => {
+      if (modifiedVehicle && (modifiedVehicle.matchedCount || modifiedVehicle.modifiedCount)) {
+        res.status(201).json(vehicle)
       } else {
         res.status(404).json()
       }
@@ -34,17 +34,17 @@ const modificarUnVehiculo = (req, res) => {
     .catch(error => res.status(404).json({ message: `Error: ${error}` }))
 }
 
-const eliminarVehiculo = (req, res) => {
-  const { patente } = req.params
-  service.borraVehiculo(patente)
-    .then(vehiculo => vehiculo ? res.status(200).json(patente) : res.status(204).json())
+const deleteOne = (req, res) => {
+  const { domain } = req.params
+  service.deleteOne(domain)
+    .then(vehicle => vehicle.deletedCount !== 0 ? res.status(200).json(domain) : res.status(204).json())
     .catch(error => res.status(404).json({ message: `Error: ${error}` }))
 }
 
 export{
-  verVehiculos,
-  verVehiculo,
-  crearVehiculo,
-  eliminarVehiculo,
-  modificarUnVehiculo,
+  findAll,
+  findOne,
+  createOne,
+  editOne,
+  deleteOne
 }

@@ -1,13 +1,14 @@
-import * as service from './Services/services.js'
+import * as services from './Services/services.js'
 
 const COLLECTION_NAME = 'servicios'
 
-const dameTodos = async () => service.getAll(COLLECTION_NAME)
-const dameServiciosPorPatente = async (patente) => service.getAllByPatente(patente, COLLECTION_NAME)
-const dameServicioPorId = async (id) => service.getServicioById(id, COLLECTION_NAME)
-const grabarServicio = async (servicio) => service.postServicio(servicio, COLLECTION_NAME)
-const editarServicio = async (servicio) => service.patchServicio(servicio, COLLECTION_NAME)
-const borrarServicio = async (patente) => service.deleteDocument(patente, COLLECTION_NAME)
+const dameTodos = async () => services.getAll(COLLECTION_NAME)
+const dameServiciosPorPatente = async (patente) => services.getAllByPatente(patente, COLLECTION_NAME)
+const dameServicioPorId = async (id) => services.getServicioById(id, COLLECTION_NAME)
+const grabarServicio = async (servicio) => services.postServicio(servicio, COLLECTION_NAME)
+const editarServicio = async (servicio) => services.patchServicio(servicio, COLLECTION_NAME)
+const borrarServicio = async (patente) => services.deleteDocument(patente, COLLECTION_NAME)
+const endService = async (id) => services.endService(id, COLLECTION_NAME)
 
 export {
     dameTodos,
@@ -15,5 +16,6 @@ export {
     dameServicioPorId,
     grabarServicio,
     editarServicio,
-    borrarServicio
+    borrarServicio,
+    endService
 }

@@ -1,24 +1,28 @@
 header {
-    background-color: rgb(87, 86, 86);
-    display: flex !important;
-    flex-direction: column !important;
-    text-align: center;
-    font-family: 'Roboto', sans-serif;
-}
-
-header a {
-    color: #FFF;
+    width: 80%;
+    margin: 0 auto;
 }
 
 header > a:link, a:visited, a:active {
     text-decoration:none !important;
 }
 
-header > a:hover {
-    color: #FFF !important;
+.header {
+    display: flex;
+    justify-content: space-between;
 }
 
-.header__logo img {
-    width: 150px;
-    height: auto;
+.header nav ul {
+    display: flex;
+}
+
+.image_logo {
+    /* width: 50%;
+    margin: 0 auto; */
+}
+
+.image_logo img {
+    height: 200px;
+    object-fit: contain;
+    padding: 2em;
 }
