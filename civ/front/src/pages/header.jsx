@@ -17,10 +17,12 @@ const Header = () => {
                 </a>
                 <nav>
                     <ul>
-                        <Link to={`/`}>Inicio</Link>
-                        <Link to={`/blog`}>Blog</Link>
-                        <Link to={`/login`}>Ingresar</Link>
-                        <Link to={`/register`}>Crear cuenta</Link>
+                        <Link to={'/'}>Inicio</Link>
+                        <Link to={'/blog'}>Blog</Link>
+                        <Link to={'/vehicles'}>Vehículos</Link>
+                        <Link to={'/services'}>Servicios</Link>
+                        <Link to={'/login'}>Ingresar</Link>
+                        <Link to={'/register'}>Crear cuenta</Link>
                     </ul>
                 </nav>
             </div>

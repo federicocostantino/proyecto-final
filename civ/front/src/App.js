@@ -8,6 +8,7 @@ import Register from './components/register'
 import Vehicles from './components/Vehicles/Vehicles'
 import EditVehicle from './components/Vehicles/editVehicle'
 import NewVehicle from './components/Vehicles/newVehicle'
+import Services from './components/Services/services'
 // import FormModificarFicha from './components/Vehicles/formModificarFicha'
 // import FormNuevoServicio from './components/Vehiculos/ServiciosVehiculo/formNuevoServicio'
 // import FormModificarServicio from './components/Vehiculos/ServiciosVehiculo/formModificarServicio'
@@ -38,6 +39,7 @@ const App = () => {
       <Route path="/vehicles" element={<Vehicles/>} />
       <Route path="/vehicles/new-vehicle" element={<NewVehicle/>} />
       <Route path="/vehicles/:domain/edit" element={<EditVehicle/>} />
+      <Route path="/services" element={<Services/>} />
       {/* <Route path="/vehiculos/:patente/modificar_ficha" element={<FormModificarFicha/>} />
       <Route path="/vehiculos/:patente/nuevo_servicio" element={<FormNuevoServicio/>} />
       <Route path="/vehiculos/:patente/modificar_servicio/:id" element={<FormModificarServicio/>} /> */}

@@ -32,7 +32,7 @@ const Vehicles = () => {
                     Cerrar sesión
                 </button>
             </div>
-            <h2 className="mt-5">Listado de vehículos</h2>
+            <h2 className="mt-5">Listado de Vehículos</h2>
             <Link 
                 to={`/vehicles/new-vehicle`} 
                 className="btn btn-primary mb-4 w-50"
@@ -58,14 +58,13 @@ const Vehicles = () => {
                         <tr key={i}> 
                             <td>{ `${vehicle.make} ${vehicle.model || ''}` }</td>
                             <td>{ vehicle.domain }</td>
-                            <td>{vehicle.type || ''}</td>
+                            <td>{ vehicle.type || '' }</td>
                             <td>{ vehicle.color || '' }</td>
                             <td>{ vehicle.year || '' }</td>
                             <td>{ vehicle.chassis || '' }</td>
                             <td>{ vehicle.insurance || '' }</td>
                             <td><Link to="#" className="btn btn-primary mx-3">Ver histórico</Link></td>
                             <td>
-                                {/* <Link to={`/vehiculos/${vehicle.patente}`} className="btn btn-primary mx-3">Ver</Link> */}
                                 <Link to={`/vehicles/${vehicle.domain}/edit`} className="btn btn-primary mx-3">Editar</Link>
 
                                 <form onSubmit={handleSubmitDelete} name={vehicle.domain}>

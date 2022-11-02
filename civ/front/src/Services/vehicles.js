@@ -77,16 +77,6 @@ async function deleteOne(domain){
     .then(response => window.location.href = `/vehicles`)
 }
 
-async function findService(patente){
-    return fetch(`http://localhost:1905/api/servicios/${patente}`, {
-        headers: {
-            'auth-token': localStorage.getItem('auth-token')
-        }
-    })
-        .then(response => response.json())
-}
-
-
 async function nuevoServicio(servicio){
     return fetch(`http://localhost:1905/api/servicios`, {
         method:'POST',
@@ -152,7 +142,6 @@ async function patchEndService({id}) {
 export {
     findAll,
     findOne,
-    findService,
     newVehicle,
     nuevoServicio,
     findOneService,
