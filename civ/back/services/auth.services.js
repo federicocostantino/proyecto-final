@@ -3,16 +3,13 @@ import bcrypt from 'bcrypt'
 
 const COLLECTION_NAME = 'Usuarios'
 
-const create = async (user) => {
+const create = async ({user, password}) => {
     return database(async db => {
-        const userOld = await db.collection(COLLECTION_NAME).findOne({
-            usuario: user.usuario
-        })
-        
-        if(!userOld) {
+        const userOld = await db.collection(COLLECTION_NAME).findOne({user})        
+        if (!userOld) {
             const salt = await bcrypt.genSalt(10)
-            const passwordHash = await bcrypt.hash(user.password, salt)
-            const userToCreate = { ...user, password: passwordHash }
+            const passwordHash = await bcrypt.hash(password, salt)
+            const userToCreate = { user, password: passwordHash }
             await db.collection(COLLECTION_NAME).insertOne(userToCreate)
             return userToCreate
         } else {
@@ -21,14 +18,13 @@ const create = async (user) => {
     })
 }
 
-const login = async (user) => {
-    const { usuario, password} = {...user}
+const login = async ({user, password}) => {
     return database(async db => {
-        const usuarioExiste = await db.collection(COLLECTION_NAME).findOne({usuario})
-        if(usuarioExiste) {
-            const isPasswordValid = await bcrypt.compare(password, usuarioExiste.password)
+        const userOld = await db.collection(COLLECTION_NAME).findOne({user})
+        if (userOld) {
+            const isPasswordValid = await bcrypt.compare(password, userOld.password)
             if(isPasswordValid) {
-                return {...usuarioExiste, password: undefined}
+                return {user, password: undefined}
             }
         }
     })

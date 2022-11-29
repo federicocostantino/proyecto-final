@@ -1,46 +1,153 @@
-import  React, { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import  React, { createRef, useState } from 'react'
+// import { useNavigate } from 'react-router-dom'
 import * as AuthService from './../Services/auth.services.js'
 import './../css/loginPage.css'
+import './../css/buttons.css'
 import { useEffect } from 'react'
 
 const Register = ({ onLogin }) => {
-    const [usuario, setUsuario] = useState('');
-    const [password, setPassword] = useState('');
+    const spanRequiredName = createRef()
+    const spanRequiredPassword = createRef()
+    const spanRequiredPasswordConfirmed = createRef()
+    const divAlert = createRef()
+
+    const [user, setUser] = useState('')
+    const [password, setPassword] = useState('')
+    const [passwordConfirmed, setPasswordConfirmed] = useState('')
     const [error, setError] = useState('')
 
-    let navigate = useNavigate()
-
     useEffect(() => {
-        const AUTH_TOKEN = localStorage.getItem('auth-token')
-        if(AUTH_TOKEN) {
-            navigate('/vehicles', {replace: true})
-        }
+        const user = localStorage.getItem('user')
+        // if(AUTH_TOKEN) {
+        //     navigate('/', {replace: true})
+        // }
     }, [])
 
-    const handleUsuario = (event) => setUsuario(event.target.value)
-    const handlePassword = (event) => setPassword(event.target.value)
+    const inputChange = e => {
+        switch (e.target.name) {
+            case 'user':
+                setUser(e.target.value)
+                e.target.value !== '' ? spanRequiredName.current.className = 'd-none' : spanRequiredName.current.className = 'span-info'
+                break;
+            case 'password':
+                setPassword(e.target.value)
+                e.target.value !== '' ? spanRequiredPassword.current.className = 'd-none' : spanRequiredPassword.current.className = 'span-info'
+                break;
+            case 'password-confirmed':
+                setPasswordConfirmed(e.target.value)
+                e.target.value !== '' ? spanRequiredPasswordConfirmed.current.className = 'd-none' : spanRequiredPasswordConfirmed.current.className = 'span-info'
+                break;
+            default:
+                break;
+        }
+    }
+
+    const closeBtnAlert = () => {
+        setError('')
+    }
 
     const handleRegister = (e) => {
         e.preventDefault()
-        if(usuario !==  '' && password !== '') {
-            AuthService.register(usuario, password)
-                .then(({user, token}) => onLogin(user, token))
-                .catch(error => setError(error.message))
-        } else {
-            setError('Debe completar todos los campos.')
+        if (user === '' || password === '' || passwordConfirmed === '') {
+            setError('Debés completar todos los campos requeridos. Volvé a intentarlo')
+            return
         }
+        if (password !== passwordConfirmed) {
+            setError('Debés completar correctamente todos los campos requeridos. Volvé a intentarlo')
+            return
+        }
+        AuthService.register(user, password)
+            .then(response => onLogin(response.user.user, response.token))
+            .catch(error => setError(error.message))
     }
     
     return(
-        <div className="register-page">
-            {error && <div className="alert alert-danger" role="alert">{error}</div>}
-            <div>
-                <form className="register-form" onSubmit={handleRegister}>
-                    <input name="usuario" id="usuario" type="text" placeholder="Nombre de usuario" onChange={handleUsuario} value={usuario}/>
-                    <input name="password" id="password" type="password" placeholder="Contraseña" onChange={handlePassword} value={password}/>
-                    <button type="submit" className="mb-3">Crear</button>
-                </form>
+        <div className="login">
+            <div className="header">
+                <p>
+                    Si todavía no tenés una cuenta para tu taller, registrate gratis y disfrutá del primer mes de suscripción sin costo alguno.
+                </p>
+            </div>
+            {
+                error && 
+                <div 
+                    className="alert alert-danger d-flex align-items-center justify-content-around" 
+                    role="alert"
+                    ref={divAlert}
+                >
+                    <div className='w-75'>
+                        {error}
+                    </div>
+                    <button 
+                        type="button" 
+                        className="btn-close" 
+                        aria-label="Close"
+                        onClick={closeBtnAlert}
+                    ></button>
+                </div>
+            }
+            <div className="contain">
+                <div className="contain-form-login">
+                    <div className='title'>
+                        <h2 className='font-family-alata'>Crear cuenta</h2>
+                    </div>
+                    <form className="login-form" onSubmit={handleRegister}>
+                        <div>
+                            <label 
+                                htmlFor="user" 
+                                className='visually-hidden'
+                            >
+                                Nombre de usuario</label>
+                            <input 
+                                name='user' 
+                                id='user' 
+                                type='text' 
+                                autoComplete='off'
+                                placeholder='Nombre de usuario' 
+                                aria-label='Nombre de usuario'
+                                required
+                                onFocus={(e) => {if (e.target.value === '') spanRequiredName.current.className = 'span-info'}}
+                                onChange={(e) => inputChange(e)}
+                                value={user}/>
+                            <span 
+                                className='d-none'
+                                ref={spanRequiredName}>Campo requerido</span>
+                        </div>
+                        <div>
+                            <input 
+                                name="password" 
+                                id="password" 
+                                type="password" 
+                                placeholder="Contraseña" 
+                                aria-label='Contraseña'
+                                required
+                                onFocus={(e) => {if (e.target.value === '') spanRequiredPassword.current.className = 'span-info'}}
+                                onChange={(e) => inputChange(e)}
+                                value={password}/>
+                            <span 
+                                className='d-none'
+                                ref={spanRequiredPassword}>Campo requerido</span>
+                        </div>
+                        <div>
+                            <input 
+                                name="password-confirmed" 
+                                id="password-confirmed" 
+                                type="password" 
+                                placeholder="Confirmá la contraseña" 
+                                aria-label='Confirmá la contraseña'
+                                required
+                                onFocus={(e) => {if (e.target.value === '') spanRequiredPasswordConfirmed.current.className = 'span-info'}}
+                                onChange={(e) => inputChange(e)} 
+                                value={passwordConfirmed}/>
+                            <span 
+                                className='d-none'
+                                ref={spanRequiredPasswordConfirmed}>Campo requerido</span>
+                        </div>
+                        <div className='buttons'>
+                            <button type='submit' className='btn__home__create_account font-family-alata'>Crear cuenta</button>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     )

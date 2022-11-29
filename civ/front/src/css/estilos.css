@@ -1,9 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Alata&display=swap');
+
 #root {
     display: flex;
     flex-direction: column;
-    height: 100vh;
     justify-content: space-between;
-    font-family: "Roboto", sans-serif;
+    font-family: 'Futura Book';
+}
+
+h2 {
+    color: #1F4866;
+}
+
+.font-family-alata {
+    font-family: 'Alata', sans-serif;
 }
 
 .borde1{
@@ -33,14 +42,6 @@ footer p{
     margin: 0;
 }
 
-.login{
-    margin-top: 3em;
-    height: fit-content;
-    padding: 25px;
-    border: 1px solid black;
-    border-radius: 10px;
-}
-
 ul li{
     list-style: none;
     text-emphasis: none;
@@ -62,20 +63,25 @@ thead{
     height: fit-content;
 }
 
-span{
+.alert {
+    width: 100vw;
+    padding: 16px 10px;
+    color: #1F4866;
+}
+
+/* span{
     font-size: 0.75em;
     font-style: italic;
     color:#3883df
-}
+} */
 
 .visually-hidden {
-    position: absolute !important;
-    width: 1px !important;
+    border: 0 !important;
+    clip: rect(0, 0, 0, 0) !important;
     height: 1px !important;
-    padding: 0 !important;
     margin: -1px !important;
     overflow: hidden !important;
-    clip: rect(0, 0, 0, 0) !important;
-    white-space: nowrap !important;
-    border: 0 !important;
+    padding: 0 !important;
+    position: absolute !important;
+    width: 1px !important;
 }

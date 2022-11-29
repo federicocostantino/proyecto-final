@@ -12,6 +12,25 @@ const findAll = async () =>
         }
     })
 
+const newService = async (service) =>
+    database(async db => {
+        try {
+            await db.collection(COLLECTION_NAME).insertOne(service)
+            return service
+        } catch (error) {
+            console.log(`Error: ${error}`)
+        }
+    })
+
+const numberOfServices = async () =>
+    database(async db => {
+        try {
+            return await db.collection(COLLECTION_NAME).count()
+        } catch (error) {
+            console.log(`Error: ${error}`)
+        }
+    })
+
 // const dameTodos = async () => services.getAll(COLLECTION_NAME)
 // const dameServiciosPorPatente = async (patente) => services.getAllByPatente(patente, COLLECTION_NAME)
 // const dameServicioPorId = async (id) => services.getServicioById(id, COLLECTION_NAME)
@@ -21,7 +40,9 @@ const findAll = async () =>
 // const endService = async (id) => services.endService(id, COLLECTION_NAME)
 
 export {
-    findAll
+    findAll,
+    newService,
+    numberOfServices
     // dameServiciosPorPatente,
     // dameServicioPorId,
     // grabarServicio,
