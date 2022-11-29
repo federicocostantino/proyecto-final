@@ -6,6 +6,19 @@ const findAll = (req, res) => {
         .catch(error => res.status(404).json({ message: `Error: ${error}` }))
 }
 
+const newService = (req, res) => {
+    const newService = req.body
+    service.newService(newService)
+        .then(service => res.status(201).json(service))
+        .catch(error => res.status(404).json({ message: `Error: ${error}` }))
+}
+
+const numberOfServices = (req, res) => {
+    service.numberOfServices()
+        .then(response => res.status(200).json(response))
+        .catch(error => res.status(404).json({ message: `Error: ${error}` }))
+}
+
 // const verServiciosPorPatente = (req, res) => {
 //     const { patente } = req.params
 //     service.dameServiciosPorPatente(patente)
@@ -67,6 +80,8 @@ const findAll = (req, res) => {
 
 export {
     findAll,
+    newService,
+    numberOfServices
     // verServiciosPorPatente,
     // verServicioPorId,
     // nuevoServicio,

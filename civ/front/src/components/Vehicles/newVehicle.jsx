@@ -1,4 +1,5 @@
 import  React, { useState } from "react"
+import { useEffect } from "react"
 import { Link } from "react-router-dom"
 import * as VehiclesService from "../../Services/vehicles"
 
@@ -31,6 +32,10 @@ const newVehicle = () => {
             setError('Debe completar todos los campos requeridos')
         }
     }
+
+    useEffect(() => {
+        console.log('hola')
+    })
     
     return (
         <div>
