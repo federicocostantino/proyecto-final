@@ -99,6 +99,7 @@
 
 .carousel-control-next, .carousel-control-prev {
     height: 350px;
+    display: none;
 }
 
 .carousel-control-next span {
@@ -122,7 +123,9 @@
 }
 
 .home__section_5 .btn_create_account {
-    width: 216px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .separator {
@@ -134,6 +137,10 @@
 
 .separator img {
     width: 100%;
+}
+
+.carousel-img {
+    height: 257px;
 }
 
 
@@ -163,6 +170,7 @@
 
 @media only screen and (min-width: 768px){
     .carousel-control-next, .carousel-control-prev {
+        display: flex;
         height: 500px;
     }
 

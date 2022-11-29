@@ -64,7 +64,7 @@ const Home = () => {
                         <Carousel.Item>
                             <img
                                 className="d-block w-100 carousel-img"
-                                src="/confiable-logo.png"
+                                src="/slider1.jpg"
                                 alt="First slide"
                             />
                             <p>Crear usuarios (tanto para tus empleados como para aquellos clientes que necesiten de tu ayuda inicial para comenzar a usar el sistema), cargar datos de los vehículos y asociarlos a un cliente, crear órdenes de trabajo y asociarlas a un vehículo.</p>
@@ -72,7 +72,7 @@ const Home = () => {
                         <Carousel.Item>
                             <img
                                 className="d-block w-100 carousel-img"
-                                src="/confiable-logo.png"
+                                src="/slider2.png"
                                 alt="Second slide"
                             />
                             <p>Llevar un control de las órdenes de trabajo y darles seguimiento desde su creación hasta que el cliente retira su vehículo de tu establecimiento.</p>
@@ -80,7 +80,7 @@ const Home = () => {
                         <Carousel.Item>
                             <img
                                 className="d-block w-100 carousel-img"
-                                src="/confiable-logo.png"
+                                src="/slider3.png"
                                 alt="Third slide"
                             />
                             <p>Consultar y descargar el listado de vehículos ingresados en el sistema con datos como, por ejemplo: a que cliente pertenece, los trabajos que se le han realizado, incluso aquellos que se encuentran en proceso, etc.</p>
@@ -88,7 +88,7 @@ const Home = () => {
                         <Carousel.Item>
                             <img
                                 className="d-block w-100 carousel-img"
-                                src="/confiable-logo.png"
+                                src="/slider4.png"
                                 alt="Third slide"
                             />
                             <p>Brindarle a tus clientes una App, a través de la cual le podrás hacer llegar el presupuesto del servicio para su aprobación, hacer el seguimiento de la reparación, verificar la fecha de finalización del trabajo y de entrega del automóvil.</p>

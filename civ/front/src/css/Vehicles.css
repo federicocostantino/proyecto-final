@@ -67,6 +67,7 @@
 }
 
 .vehicles .content .table .listing .data div {
+    height: 110px;
     padding: 0;
     display: flex;
     justify-content: space-between;

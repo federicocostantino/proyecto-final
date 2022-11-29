@@ -34,7 +34,7 @@ const Vehicles = () => {
                     <div className="link">
                         <Link 
                             to={`/vehicles/new-vehicle`} 
-                            className="btn btn-primary mb-4 w-50"
+                            className="btn__load-new"
                         >
                             Ingresar Nuevo Vehiculo
                         </Link>
@@ -61,12 +61,12 @@ const Vehicles = () => {
                                     <p>{ vehicle.color || '' }</p>
                                     <p>{ vehicle.year || '' }</p>
                                     <p>{ vehicle.insurance || '' }</p>
-                                    <p><Link to="#" className="btn btn-primary mx-3">Ver histórico</Link></p>
+                                    <p><Link to="#" className="btn__see-more">Ver</Link></p>
                                     <p>
-                                        <Link to={`/vehicles/${vehicle.domain}/edit`} className="btn btn-primary mx-3">Editar</Link>
+                                        <Link to={`/vehicles/${vehicle.domain}/edit`} className="btn__edit">Modificar</Link>
 
                                         <form onSubmit={handleSubmitDelete} name={vehicle.domain}>
-                                            <button className="btn btn-danger" type="submit">Eliminar</button>
+                                            <button className="btn__delete" type="submit">Eliminar</button>
                                         </form>
                                     </p>
                                 </div>

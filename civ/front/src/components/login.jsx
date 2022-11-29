@@ -121,7 +121,7 @@ const Login = ({ onLogin }) => {
                                 ref={spanRequiredPassword}>Campo requerido</span>
                         </div>
                         <div className='buttons'>
-                            <button type='submit' className='btn__home__create_account font-family-alata'>Crear cuenta</button>
+                            <button type='submit' className='btn__home__create_account font-family-alata'>Iniciar sesión</button>
                         </div>
                     </form>
                 </div>

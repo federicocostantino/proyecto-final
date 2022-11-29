@@ -10,6 +10,63 @@
     background-color: #1A3349;
 }
 
+.link .btn__load-new {
+    width: 20%;
+    height: 45px;
+    margin-bottom: 15px;
+    color: #FFF;
+    text-transform: uppercase;
+    text-decoration: none;
+    background-color: #2C8E29;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn__see-more {
+    width: 50%;
+    margin: 0 auto;
+    height: 45px;
+    color: #FFF;
+    background-color: #286A93;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn__edit {
+    width: 70%;
+    height: 45px;
+    margin: 1% 15% 3%;
+    color: #FFF;
+    background-color: #bd680d;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn__delete {
+    width: 70%;
+    height: 45px;
+    margin: 1% 15% 3%;
+    color: #FFF;
+    background-color: #912933;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 @media only screen and (min-width: 768px) {
     .btn__home__create_account {
         font-size: 24px;
