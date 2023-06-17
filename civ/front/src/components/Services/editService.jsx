@@ -1,17 +1,15 @@
 import  React, { useEffect, useState } from 'react'
-import { Link, useNavigate } from "react-router-dom"
-import * as VehiclesServices from './../../Services/vehicles.js'
+import { Link, useNavigate, useParams } from "react-router-dom"
 import * as ServicesServices from './../../Services/services.js'
 
 import './../../css/Services/newService.css'
 
-const newService = () => {
-    let navigate = useNavigate()
+const editService = () => {
+    const { id: idParams } = useParams()
     const date = new Date().getDate()+'/'+(new Date().getMonth()+1)+'/'+new Date().getFullYear()
-    const [mechanic, setMechanic] = useState('')
-
-    const [vehicles, setVehicles] = useState([])
-
+    
+    let navigate = useNavigate()
+    
     const [domain, setDomain] = useState('')
     const [dni, setDni] = useState(0)
     const [order, setOrder] = useState('')
@@ -19,6 +17,7 @@ const newService = () => {
     const [total, setTotal] = useState(0)
     const [km, setKm] = useState('')
     const [spareParts, setSpareParts] = useState('')
+    const [mechanic, setMechanic] = useState('')
 
     const [error, setError] = useState('')
 
@@ -30,21 +29,24 @@ const newService = () => {
             return
         }
 
-        setMechanic(user.replace(/[ '"]+/g, ''))
-
-        VehiclesServices.findAll()
-            .then(vehicles => setVehicles(vehicles))
-            .catch(err => console.error(err))
-        
-        ServicesServices.numberOfServices()
-            .then(quantity => quantity ? setOrder(Number(quantity) + 1) : setOrder(1))
-            .catch(err => console.error(err))
+        ServicesServices.findOne(idParams)
+            .then(service => {
+                setDomain(service.domain)
+                setDni(service.dni)
+                setOrder(service.order)
+                setDetail(service.detail)
+                setTotal(service.total)
+                setKm(service.km)
+                setSpareParts(service.spareParts)
+                setMechanic(service.mechanic)
+            })
+            .catch(err => console.error(`Error: ${err}`))
     }, [])
 
     const handleSubmit = (e) => {
         e.preventDefault()
         if(dni !== '' && domain !== '' && detail !== '' && total !== 0) {
-            const newService = {
+            const service = {
                 state: 'Pendiente',
                 payment: 'Pendiente',
                 date,
@@ -57,7 +59,7 @@ const newService = () => {
                 detail,
                 total,
             }
-            ServicesServices.newService(newService)
+            ServicesServices.editService(service, idParams)
         } else {
             setError('Debe completar todos los campos requeridos')
             window.scroll(0,0)
@@ -67,7 +69,7 @@ const newService = () => {
     return (
         <div className="newService">
             <div className="header">
-                <p>Ingresá un nuevo servicio</p>
+                <p>Detalle del servicio</p>
             </div>
             {error && <div className="alert alert-danger text-center" role="alert">{error}</div>}
             <div className="content">
@@ -112,22 +114,15 @@ const newService = () => {
                                         placeholder="DNI del propietario *"
                                         required
                                         onChange={(e) => setDni(Number(e.target.value))}
+                                        value={dni}
                                     />
                                 </div>
                                 <div>
                                     <label htmlFor="domain">Dominio</label>
-                                    <select
-                                        defaultValue={"0"}
-                                        required
-                                        onChange={(e) => setDomain(e.target.value)}
-                                    >
-                                        <option value="0" disabled>Seleccione el dominio del vehículo *</option>
-                                        {vehicles.map(vehicle => {
-                                            return(
-                                                <option key={vehicle.domain} value={vehicle.domain}>{vehicle.domain}</option>
-                                            )
-                                        })}
-                                    </select>
+                                    <input type="text" name="domain" id="domain"
+                                        readOnly
+                                        value={domain}
+                                    />
                                 </div>
                                 <div>
                                     <label htmlFor="km">Kilometraje actual</label>
@@ -135,6 +130,7 @@ const newService = () => {
                                         placeholder='Kilometraje actual'
                                         min={0}
                                         onChange={(e) => setKm(e.target.value)}
+                                        value={km}
                                     />
                                 </div>
                             </div>
@@ -145,7 +141,8 @@ const newService = () => {
                                         required
                                         placeholder='Repuestos a utilizar'
                                         onChange={(e) => setSpareParts(e.target.value)}
-                                    ></textarea>
+                                        value={spareParts}
+                                    >{spareParts}</textarea>
                                 </div>
                             </div>
                             <div>
@@ -155,6 +152,7 @@ const newService = () => {
                                         required
                                         placeholder='Trabajo a realizar *'
                                         onChange={(e) => setDetail(e.target.value)}
+                                        value={detail}
                                     ></textarea>
                                 </div>
                             </div>
@@ -169,6 +167,7 @@ const newService = () => {
                                         required
                                         min={0}
                                         onChange={(e) => setTotal(Number(e.target.value))}
+                                        value={total}
                                     />
                                 </div>
                             </div>
@@ -186,4 +185,4 @@ const newService = () => {
     )
 }
 
-export default newService
+export default editService
