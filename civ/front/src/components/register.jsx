@@ -1,6 +1,6 @@
 import  React, { createRef, useState } from 'react'
-// import { useNavigate } from 'react-router-dom'
 import * as AuthService from './../Services/auth.services.js'
+import { useNavigate } from 'react-router-dom'
 import './../css/loginPage.css'
 import './../css/buttons.css'
 import { useEffect } from 'react'
@@ -16,11 +16,13 @@ const Register = ({ onLogin }) => {
     const [passwordConfirmed, setPasswordConfirmed] = useState('')
     const [error, setError] = useState('')
 
+    let navigate = useNavigate()
+
     useEffect(() => {
         const user = localStorage.getItem('user')
-        // if(AUTH_TOKEN) {
-        //     navigate('/', {replace: true})
-        // }
+        if(user) {
+            navigate('/', {replace: true})
+        }
     }, [])
 
     const inputChange = e => {
@@ -65,7 +67,7 @@ const Register = ({ onLogin }) => {
         <div className="login">
             <div className="header">
                 <p>
-                    Si todavía no tenés una cuenta para tu taller, registrate gratis y disfrutá del primer mes de suscripción sin costo alguno.
+                    Si todavía no tenés una cuenta para tu taller, registrate gratis y disfrutá de nuestro servicio.
                 </p>
             </div>
             {
@@ -121,6 +123,7 @@ const Register = ({ onLogin }) => {
                                 placeholder="Contraseña" 
                                 aria-label='Contraseña'
                                 required
+                                autoComplete=''
                                 onFocus={(e) => {if (e.target.value === '') spanRequiredPassword.current.className = 'span-info'}}
                                 onChange={(e) => inputChange(e)}
                                 value={password}/>
@@ -136,6 +139,7 @@ const Register = ({ onLogin }) => {
                                 placeholder="Confirmá la contraseña" 
                                 aria-label='Confirmá la contraseña'
                                 required
+                                autoComplete=''
                                 onFocus={(e) => {if (e.target.value === '') spanRequiredPasswordConfirmed.current.className = 'span-info'}}
                                 onChange={(e) => inputChange(e)} 
                                 value={passwordConfirmed}/>

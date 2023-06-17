@@ -6,6 +6,13 @@ const findAll = (req, res) => {
         .catch(error => res.status(404).json({ message: `Error: ${error}` }))
 }
 
+const findOne = (req, res) => {
+    const { id } = req.params
+    service.findOne(id)
+        .then(service => res.status(200).json(service))
+        .catch(error => res.status(404).json({ message: `Error: ${error}` }))
+}
+
 const newService = (req, res) => {
     const newService = req.body
     service.newService(newService)
@@ -15,8 +22,28 @@ const newService = (req, res) => {
 
 const numberOfServices = (req, res) => {
     service.numberOfServices()
-        .then(response => res.status(200).json(response))
+        // .then(response => res.status(200).json(response))
+        .then(response => {
+            if(response !== 0) {
+                res.status(200).json(response)
+            } else {
+                res.status(200).json('0')
+            }
+        })
         .catch(error => res.status(404).json({ message: `Error: ${error}` }))
+}
+
+const edit = (req, res) => {
+    const serviceReq = req.body
+    const id = req.params
+    service.edit(serviceReq, id)
+        .then(modifiedService => {
+            if(modifiedService && (modifiedService.matchedCount || modifiedService.modifiedCount)) {
+                res.status(201).json(serviceReq)
+            } else {
+                res.status(404).json()
+            }
+        })
 }
 
 // const verServiciosPorPatente = (req, res) => {
@@ -26,12 +53,7 @@ const numberOfServices = (req, res) => {
 //         .catch(error => res.status(404).json({ message: `Error: ${error}` }))
 // }
 
-// const verServicioPorId = (req, res) => {
-//     const { id } = req.params
-//     service.dameServicioPorId(id)
-//         .then(servicio => res.status(200).json(servicio))
-//         .catch(error => res.status(404).json({ message: `Error: ${error}` }))
-// }
+
 
 // const nuevoServicio = (req, res) => {
 //     const servicio = req.body
@@ -40,17 +62,7 @@ const numberOfServices = (req, res) => {
 //         .catch(error => res.status(404).json({ message: `Error: ${error}` }))
 // }
 
-// const editarServicio = (req, res) => {
-//     const servicio = req.body
-//     service.editarServicio(servicio)
-//         .then(servicioModificado => {
-//             if(servicioModificado && (servicioModificado.matchedCount || servicioModificado.modifiedCount)) {
-//                 res.status(201).json(servicio)
-//             } else {
-//                 res.status(404).json()
-//             }
-//         })
-// }
+
 
 // const eliminarServicio = (req, res) => {
 //     const { patente } = req.params
@@ -80,7 +92,9 @@ const numberOfServices = (req, res) => {
 
 export {
     findAll,
+    findOne,
     newService,
+    edit,
     numberOfServices
     // verServiciosPorPatente,
     // verServicioPorId,

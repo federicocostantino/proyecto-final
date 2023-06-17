@@ -112,6 +112,7 @@ const Login = ({ onLogin }) => {
                                 type="password" 
                                 placeholder="Contraseña" 
                                 aria-label='Contraseña'
+                                autoComplete=''
                                 required
                                 onFocus={(e) => {if (e.target.value === '') spanRequiredPassword.current.className = 'span-info'}}
                                 onChange={(e) => inputChange(e)}

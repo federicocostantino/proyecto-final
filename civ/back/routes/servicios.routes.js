@@ -7,9 +7,10 @@ const router = express.Router();
 router.all('*', authorization)
 
 router.get('/', controller.findAll)
+router.get('/findOne/:id', controller.findOne)
 router.get('/numberOfServices', controller.numberOfServices)
-
 router.post('', controller.newService)
+router.patch('/:id', controller.edit)
 // router.get('/:patente', controller.verServiciosPorPatente)
 // router.get('/:patente/:id', controller.verServicioPorId)
 // router.post('', controller.nuevoServicio)

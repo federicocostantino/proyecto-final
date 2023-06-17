@@ -22,6 +22,33 @@ async function newService(service) {
     .catch(err => console.error('[services/newService]: ' + err))
 }
 
+/**
+ * Returns an object with the service's data. Receives as parameter the service's id.
+ * @param {string} id 
+ * @returns {Promise<any>} 
+ */
+async function findOne(id){
+    return fetch(`http://localhost:1905/api/services/findOne/${id}`, {
+        headers: {
+            'auth-token': localStorage.getItem('auth-token')
+        }
+    })
+        .then(response => response.json())
+}
+
+async function editService(service, id){
+    return fetch(`http://localhost:1905/api/services/${id}`,{
+        method:'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+            'auth-token': localStorage.getItem('auth-token')
+        },
+        body: JSON.stringify(service)
+    })
+    .then(response => (response.status === 201) ? response.json() : null)
+    .then(response => response ? window.location.href = `/services` : alert('Hubo un problema'))
+}
+
 async function numberOfServices() {
     return fetch(`http://localhost:1905/api/services/numberOfServices`, {
         headers: {
@@ -35,5 +62,7 @@ async function numberOfServices() {
 export {
     findAll,
     newService,
+    findOne,
+    editService,
     numberOfServices
 }

@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from "react-router-dom"
 
 import './../css/home.css'
 import './../css/buttons.css'
@@ -115,8 +116,15 @@ const Home = () => {
                         Animate a innovar con nosotros y descubrí una nueva forma de manejar tu empresa
                     </p>
                     <div className='btn_create_account'>
-                        <button className='btn__home__create_account font-family-alata'>Crear cuenta</button>
+                        <Link
+                            to={'/register'}
+                        >
+                            <button className='btn__home__create_account font-family-alata'>Crear cuenta</button>
+                        </Link>
                     </div>
+                    {/* <div className='btn_create_account'>
+                        <button className='btn__home__create_account font-family-alata'>Crear cuenta</button>
+                    </div> */}
                 </div>
             </section>
             <section className="separator">
