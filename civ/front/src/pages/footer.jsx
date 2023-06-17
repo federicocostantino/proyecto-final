@@ -17,6 +17,7 @@ function Footer(){
                     <li>Brandi, Lucio</li>
                     <li>Costantino, Federico</li>
                     <li>Sanchez Liporacce, Andrea</li>
+                    <li>Zanutel, Lucas</li>
                 </ul>
             </div>
         </footer>
