@@ -44,6 +44,7 @@ header > a:link, a:visited, a:active {
     color: #FFFFFF !important;
     transition: background-color 500ms ease-in-out, color 500ms ease-in-out, padding 500ms ease-in-out, border-radius 500ms ease-in-out, font-weight 500ms ease-in-out;
     display: inline-block;
+    font-family: 'Alata', sans-serif;
 }
 
 /* .header__header nav ul li a:hover {
