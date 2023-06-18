@@ -1,7 +1,7 @@
 import { database } from "./Services/database.js"
 import bcrypt from 'bcrypt'
 
-const COLLECTION_NAME = 'Usuarios'
+const COLLECTION_NAME = 'usuarios'
 
 const create = async ({user, password}) => {
     return database(async db => {

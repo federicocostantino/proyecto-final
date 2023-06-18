@@ -1,47 +1,28 @@
 [
-    {
-    "patente": "arz763",
-    "marca": "volkswagen",
-    "modelo": "golf",
-    "fabricacion": 1997,
-    "color": "dorado",
-    "propietario": 30430143,
-    "km": 150000
+  {
+    "_id": {
+      "$oid": "6362f3d60b6797da845854f8"
     },
-    {
-    "patente": "ab123cd",
-    "marca": "volkswagen",
-    "modelo": "polo",
-    "fabricacion": 2021,
-    "color": "gris",
-    "propietario": 20430143,
-    "km": 15000
+    "domain": "ADP 023",
+    "make": "FIAT",
+    "model": "Palio",
+    "type": "VEHICULO",
+    "color": "ROJO",
+    "year": 2018,
+    "chassis": "2342675687548",
+    "insurance": "SURA"
+  },
+  {
+    "_id": {
+      "$oid": "648e17bc25fafc4fadf1e851"
     },
-    {
-    "patente": "lmb111",
-    "marca": "ford",
-    "modelo": "fiesta",
-    "fabricacion": 2000,
-    "color": "rojo",
-    "propietario": 10430143,
-    "km": 15500
-    },
-    {
-    "patente": "lmb222",
-    "marca": "ford",
-    "modelo": "f100",
-    "fabricacion": 1990,
-    "color": "negro",
-    "propietario": 10430143,
-    "km": 180000
-    },
-    {
-    "patente": "ffc111",
-    "marca": "fiat",
-    "modelo": "uno",
-    "fabricacion": 1999,
-    "color": "gris",
-    "propietario": 40430143,
-    "km": 200000
-    }
-  ]
+    "domain": "ADP 024",
+    "make": "FIAT",
+    "model": "Argo",
+    "type": "VEHICULO",
+    "color": "NEGRO",
+    "year": 2023,
+    "chassis": "2342675687550",
+    "insurance": "FEDERACION PATRONAL"
+  }
+]
