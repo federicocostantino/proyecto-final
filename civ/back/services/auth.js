@@ -1,4 +1,4 @@
-import { database } from "./Services/database.js"
+import { database } from "./database.js"
 import bcrypt from 'bcrypt'
 
 const COLLECTION_NAME = 'Usuarios'

@@ -6,7 +6,6 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import App from './App';
 
-// import './css/bootstrap.css'
 import './css/estilos.css'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

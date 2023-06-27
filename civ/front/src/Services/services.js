@@ -4,8 +4,8 @@ async function findAll() {
             'auth-token': localStorage.getItem('auth-token')
         }
     })
-        .then(response => response.json())
-        .catch(err => console.error('[services/findAll]: ' + err))
+    .then(response => response.json())
+    .catch(err => console.error('[services/findAll]: ' + err))
 }
 
 async function newService(service) {
@@ -33,7 +33,7 @@ async function findOne(id){
             'auth-token': localStorage.getItem('auth-token')
         }
     })
-        .then(response => response.json())
+    .then(response => response.json())
 }
 
 async function editService(service, id){

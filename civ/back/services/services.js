@@ -1,5 +1,4 @@
-import * as services from './Services/services.js'
-import { database, ObjectId } from './Services/database.js'
+import { database, ObjectId } from './database.js'
 
 const COLLECTION_NAME = 'servicios'
 
@@ -32,7 +31,6 @@ const newService = async (service) =>
         }
     })
 
-// const edit = async (servicio) => services.patchServicio(servicio, COLLECTION_NAME)
 const edit = async (service, id) =>
     database(async db => {
         try {
@@ -59,24 +57,10 @@ const numberOfServices = async () =>
         }
     })
 
-// const dameTodos = async () => services.getAll(COLLECTION_NAME)
-// const dameServiciosPorPatente = async (patente) => services.getAllByPatente(patente, COLLECTION_NAME)
-
-// const grabarServicio = async (servicio) => services.postServicio(servicio, COLLECTION_NAME)
-
-// const borrarServicio = async (patente) => services.deleteDocument(patente, COLLECTION_NAME)
-// const endService = async (id) => services.endService(id, COLLECTION_NAME)
-
 export {
     findAll,
     findOne,
     newService,
     edit,
     numberOfServices
-    // dameServiciosPorPatente,
-    // dameServicioPorId,
-    // grabarServicio,
-    // editarServicio,
-    // borrarServicio,
-    // endService
 }
