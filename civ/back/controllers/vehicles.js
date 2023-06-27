@@ -1,4 +1,4 @@
-import * as service from '../services/vehicles.service.js'
+import * as service from '../services/vehicles.js'
 
 const findAll = (req, res) => {
   service.findAll()

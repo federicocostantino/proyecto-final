@@ -29,7 +29,6 @@ const register = async (user, password) => {
             }
             throw new Error('El usuario ingresado ya existe. Por favor, elegí otro y volvé a intentarlo.')
         })
-        // .catch(err => console.log(err))
 }
 
 export {

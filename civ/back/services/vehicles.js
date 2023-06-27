@@ -1,4 +1,4 @@
-import { database } from './Services/database.js'
+import { database } from './database.js'
 
 const COLLECTION_NAME = 'vehiculos'
 

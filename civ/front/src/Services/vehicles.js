@@ -8,7 +8,7 @@ async function findAll(){
             'auth-token': localStorage.getItem('auth-token')
         }
     })
-        .then(response => response.json())
+    .then(response => response.json())
 }
 
 /**
@@ -22,7 +22,7 @@ async function findOne(domain){
             'auth-token': localStorage.getItem('auth-token')
         }
     })
-        .then(response => response.json())
+    .then(response => response.json())
 }
 
 /**
@@ -39,8 +39,8 @@ async function newVehicle(vehicle){
         },
         body: JSON.stringify(vehicle)
     })
-        .then(response => (response.status === 201) ? response.json() : null)
-        .then(response => response ? window.location.href = '/vehicles' : alert('Ya existe un vehículo cargado con esa patente.'))
+    .then(response => (response.status === 201) ? response.json() : null)
+    .then(response => response ? window.location.href = '/vehicles' : alert('Ya existe un vehículo cargado con esa patente.'))
 }
 
 /**
@@ -74,7 +74,7 @@ async function deleteOne(domain){
             'auth-token': localStorage.getItem('auth-token')
         }
     })
-    .then(response => window.location.href = `/vehicles`)
+    .then(() => window.location.href = `/vehicles`)
 }
 
 async function nuevoServicio(servicio){
@@ -87,7 +87,7 @@ async function nuevoServicio(servicio){
         body: JSON.stringify(servicio)
     })
     .then(response => response.json())
-    .then(response => window.location.href = `/vehiculos/${servicio.patente}`)
+    .then(() => window.location.href = `/vehiculos/${servicio.patente}`)
 }
 
 async function findOneService(patente, id){
@@ -96,8 +96,8 @@ async function findOneService(patente, id){
             'auth-token': localStorage.getItem('auth-token')
         }
     })
-        .then(response => response.json())
-        .catch(error => console.log(`Error: ${error}`))
+    .then(response => response.json())
+    .catch(error => console.log(`Error: ${error}`))
 
 }
 
@@ -109,9 +109,8 @@ async function deleteOneService(patente){
             'auth-token': localStorage.getItem('auth-token')
         }
     })
-    .then(response => window.location.href = `/vehiculos/${patente}`)
+    .then(() => window.location.href = `/vehiculos/${patente}`)
 }
-
 
 async function patchOneServicio(servicio){
     return fetch(`http://localhost:1905/api/servicios/editService/${servicio.id}`,{
@@ -123,7 +122,7 @@ async function patchOneServicio(servicio){
         body: JSON.stringify(servicio)
     })
     .then(response => response.json())
-    .then(response => window.location.href = `/vehiculos/${servicio.patente}`)
+    .then(() => window.location.href = `/vehiculos/${servicio.patente}`)
 }
 
 async function patchEndService({id}) {
